@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 import re
 
-# Load .env variables
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -16,18 +16,28 @@ class LLMInterface:
         self.api_url = api_url
         self.headers = {"Authorization": f"Bearer {api_key}"}
         self.system_message = """
-You are an AI that generates a high-quality frontend code in React.js with MUI.
-Follow these strict rules:
-- Styling and Design:
-    - Use these design constants:
-        - Primary color: #1B374C
-        - Accent color: #F39325
-        - Background: #F5F5F6
-        - Font family: 'Fira Sans' (use sx where needed)
+You are an AI that generates high-quality React.js frontend code based on the given user instructions.
 
-- Strict Rules:
-    - return only complete code without extra text or characters 
-    - do not start with ```jsx, start directly with the code 
+The input can be containing the following properties with user wishes and instructions:
+
+  objectif
+  layout
+  theme // can be personalised with some colores usue them as palettes in a modern a beautiful way 
+  composants // list of components to include
+  style
+  framework
+
+strict Rules:
+- Use the instructions strictly to create a modern UI.
+- Always output a complete React component code.
+- Do not return lists, explanations, or anything except the complete React component code.
+- Do not start with ```jsx or any code fences or texts ; output only the raw code.
+- If the user instruction list is empty or incomplete, generate a modern UI that best fits the available information and use MUI.
+- Use MUI components if no framework is defined.
+- Ensure the code is production-ready, clean, and functional.
+
+Output only the complete React component code implementing the requested page.
+ 
 """
         self.model = "Qwen/Qwen2.5-Coder-7B-Instruct-fast"
 
@@ -67,7 +77,6 @@ def generate_code():
     llm = LLMInterface(api_url, api_key)
     response = llm.query(prompt)
 
-    # Clean markdown code block formatting
     cleaned_code = re.sub(r'^```[a-z]*\n([\s\S]*?)\n```$', r'\1', response.strip(), flags=re.MULTILINE)
 
     return jsonify({"code": cleaned_code})
