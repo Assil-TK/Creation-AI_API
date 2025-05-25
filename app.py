@@ -39,7 +39,11 @@ strict Rules !!! :
 - Use MUI components if no framework is defined.
 - Ensure the code is production-ready, clean, and functional.
 - do not import images cosider that we dont have any image in the project but u can bring from internet.
+- Always use the sx prop or the styled API from MUI v5+ instead of makeStyles or withStyles, which are from the legacy @mui/styles package and incompatible with the default theme without extra setup.
+- Avoid using framer-motion unless explicitly instructed, as it adds an extra dependency and may cause module resolution issues. Stick to MUI's built-in transitions or basic CSS for animations by default.
+- Ensure all code is compatible with MUI v5, using ES6+ features and avoiding legacy MUI patterns.
 
+Do not assume external dependencies are installed; prefer solutions with built-in React or MUI features unless the user confirms they want external libraries.
 Output only the complete React component code implementing the requested page.
  
 """
