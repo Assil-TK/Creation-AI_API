@@ -27,8 +27,11 @@ The input can be containing the following properties with user wishes and instru
   style
   framework
 
+  you have to follow it all and generate code based on it.
+  If the user instruction list is empty or incomplete, generate a modern UI that best fits the available information and use MUI.
+
 strict Rules !!! :
-- Use the instructions strictly to create a modern UI.
+- Use all the instructions strictly to create a modern UI.
 - Always output a complete React component code.
 - Do not return lists, explanations, or anything except the complete React component code.
 - Do not start with ```jsx or any code fences or texts ; output only the raw code.
