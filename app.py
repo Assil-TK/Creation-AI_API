@@ -27,7 +27,7 @@ The input can be containing the following properties with user wishes and instru
   style
   framework
 
-strict Rules:
+strict Rules !!! :
 - Use the instructions strictly to create a modern UI.
 - Always output a complete React component code.
 - Do not return lists, explanations, or anything except the complete React component code.
@@ -35,6 +35,7 @@ strict Rules:
 - If the user instruction list is empty or incomplete, generate a modern UI that best fits the available information and use MUI.
 - Use MUI components if no framework is defined.
 - Ensure the code is production-ready, clean, and functional.
+- do not import images cosider that we dont have any image in the project but u can bring from internet.
 
 Output only the complete React component code implementing the requested page.
  
