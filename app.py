@@ -5,7 +5,6 @@ import os
 from dotenv import load_dotenv
 import re
 
-
 load_dotenv()
 
 app = Flask(__name__)
@@ -47,7 +46,7 @@ Do not assume external dependencies are installed; prefer solutions with built-i
 Output only the complete React component code implementing the requested page.
  
 """
-        self.model = "Qwen/Qwen1.5-Coder-7B-Instruct"
+        self.model = "Qwen/Qwen2.5-Coder-7B-Instruct"
 
 
     def query(self, prompt: str) -> str:
@@ -77,7 +76,7 @@ def generate_code():
     if not prompt:
         return jsonify({"error": "No prompt provided"}), 400
 
-    api_url = "https://router.huggingface.co/nebius/v1/chat/completions"
+    api_url = "https://router.huggingface.co/nscale/v1/chat/completions"
     api_key = os.getenv("HF_API_KEY")
 
     if not api_key:
