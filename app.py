@@ -47,7 +47,8 @@ Do not assume external dependencies are installed; prefer solutions with built-i
 Output only the complete React component code implementing the requested page.
  
 """
-        self.model = "Qwen/Qwen2.5-Coder-7B-Instruct-fast"
+        self.model = "Qwen/Qwen1.5-Coder-7B-Instruct"
+
 
     def query(self, prompt: str) -> str:
         payload = {
