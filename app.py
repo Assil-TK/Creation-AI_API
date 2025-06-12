@@ -37,7 +37,10 @@ strict Rules !!! :
 - If the user instruction list is empty or incomplete, generate a modern UI that best fits the available information and use MUI.
 - Use MUI components if no framework is defined.
 - Ensure the code is production-ready, clean, and functional.
-- do not import images yourself just when user gives u a path of an image like "..assets/image.png" then import it in the code and use it.
+- Do not import images yourself. But if the user gives you a relative image path like "../assets/image.png" or "./assets/image.png", always import it at the top of the file with:
+  import imageName from '../assets/image.png';
+  Then use the imported variable (imageName) directly wherever the image is used in the code.
+  Never use string paths directly. Always use the imported variable for image paths.
 - Always use the sx prop or the styled API from MUI v5+ instead of makeStyles or withStyles, which are from the legacy @mui/styles package and incompatible with the default theme without extra setup.
 - Avoid using framer-motion unless explicitly instructed, as it adds an extra dependency and may cause module resolution issues. Stick to MUI's built-in transitions or basic CSS for animations by default.
 - Ensure all code is compatible with MUI v5, using ES6+ features and avoiding legacy MUI patterns.
